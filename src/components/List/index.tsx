@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Item from "./Item";
 import style from "./List.module.scss";
 
 function List() {
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       task: "React",
       time: "02:00:00",
@@ -11,15 +12,12 @@ function List() {
       task: "Typescript",
       time: "01:00:00",
     },
-  ];
+  ]);
   return (
     <aside className={style.listTasks}>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index} className={style.item}>
-            <h3>{task.task}</h3>
-            <span>{task.time}</span>
-          </li>
+          <Item key={index} {...task} />
         ))}
       </ul>
     </aside>
