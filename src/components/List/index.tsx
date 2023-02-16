@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import { ITask } from "../../types/task";
 import Item from "./Item";
 import style from "./List.module.scss";
 
-function List() {
-  const [tasks, setTasks] = useState([
-    {
-      task: "React",
-      time: "02:00:00",
-    },
-    {
-      task: "Typescript",
-      time: "01:00:00",
-    },
-  ]);
+function List({ tasks }: { tasks: ITask[] }) {
   return (
     <aside className={style.listTasks}>
       <ul>
