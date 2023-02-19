@@ -7,9 +7,10 @@ import { timeToSeconds } from "../../common/utils/date";
 
 interface Props {
   selected: ITask | undefined;
+  finishTask: () => void;
 }
 
-export default function Cronometer({ selected }: Props) {
+export default function Cronometer({ selected, finishTask }: Props) {
   const [time, setTime] = useState<number>();
 
   useEffect(() => {
@@ -18,13 +19,28 @@ export default function Cronometer({ selected }: Props) {
     }
   }, [selected]);
 
+  function regressive(counter: number = 0) {
+    setTimeout(() => {
+      if (counter > 0) {
+        setTime(counter - 1);
+        return regressive(counter - 1);
+      }
+      finishTask();
+    }, 1000);
+  }
+
   return (
     <div className={style.cronometer}>
       <p className={style.title}>Pick a card and start the cronometer</p>
       <div className={style.clockWrapper}>
-        <Clock />
+        <Clock time={time} />
       </div>
-      <Button text="Start" />
+      <Button
+        text="Start"
+        onClick={() => {
+          regressive(time);
+        }}
+      />
     </div>
   );
 }
