@@ -1,3 +1,7 @@
+## Screenshots
+
+![Screenshot](https://i.postimg.cc/h4bWdZzM/2023-02-20.png "Screenshot")
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
