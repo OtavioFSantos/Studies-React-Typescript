@@ -1,4 +1,4 @@
-import style from "../Item.module.scss";
+import style from "./Item.module.scss";
 import { ITask } from "../../../types/task";
 
 interface Props extends ITask {
